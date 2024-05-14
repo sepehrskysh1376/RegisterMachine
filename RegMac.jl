@@ -1,4 +1,4 @@
-println("Hello Sepehr!")
+println("Hello World!")
 print("We are creating a user surface for Register Machine.\n\n")
 print("\t\tRegister Machine\n")
 print("\t\t----------------\n")
@@ -6,21 +6,23 @@ print("A machine that compute a specific function\nFor the function itself or a 
 print("It asks you for the number of registers and
       then for each registers' value as initial configuration.\n\n")
 
-function registers()
+function registers(RegNum) # Making the empty registers
     """
     Input
         n: The number of registers
     Output
-        An array with 'n' registers
+        An array with 'n' 0 registers
     """
-    print("How many register do you need?\n> ")
+    print("The Minimum number of Registers you need is: $(RegNum+1)\n")
+    print("Now, how many registers do you need?\n> ")
     n = parse(Int64, readline())
     return zeros(Int64, n)
 end
 
 
-function readProgram(filename)
+function readProgram(filename) # Reading the Program
     lines = readlines(filename)
+    RegsInProg = Set([])
     println("---------------------")
     Program = []
     Prog_num = []
@@ -34,6 +36,12 @@ function readProgram(filename)
         pp = []
         for i in 1:length(p)
             c += 1
+            if i == 3
+                RegInt = parse(Int64, p[i])
+                if RegInt ∉ RegsInProg
+                    push!(RegsInProg, RegInt) 
+                end
+            end
             if c == 2
                 push!(pp, p[i])
                 continue
@@ -46,21 +54,25 @@ function readProgram(filename)
     end
     println("Program Number: $Prog_num")
 
-    return Program, Prog_num
+    return Program, Prog_num, maximum(RegsInProg)
 end
 
 
-function initialization(registeries)
+function initialization(registeries) # Putting the initial Configuration for your registers
     println("\nPut the registeries:")
     for i in 1:length(registeries)
-        print("R$(i-1)> ")
+        if i == 1
+            print("R$(i-1) (default is 1)> ")
+        else
+            print("R$(i-1)> ")
+        end
         r = parse(Int64, readline())
         registeries[i] = r
     end
     println(registeries)
 end
 
-function functioning(program, registeries, program_number)
+function functioning(program, registeries, program_number) # Run the Program for initial registers
     while true
         r0 = registeries[1]
         if r0 ∉  program_number
@@ -89,13 +101,12 @@ end
 # Input file
 print("\nThe files in the current directory:\n"); run(`ls`)
 print("\nEnter the file name:\n> "); filename = readline()
+prog, prog_num, RegsMinNum = readProgram(filename)
 
-
-reg = registers()
+reg = registers(RegsMinNum)
 println(reg)
 
 
-prog, prog_num = readProgram(filename)
 println(prog)
 initialization(reg)
 
