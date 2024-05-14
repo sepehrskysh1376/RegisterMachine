@@ -3,6 +3,7 @@
 * It Works with two things:
 1. A Program to get the instructions
 2. A Registers which contain the inputs and outputs
+* This Idea came to me by Chapter 6 of a book named, **Minds and Computers: An Introduction to the Philosophy of Artificial Intelligence** by Matt Carter.
 
 ## The files:
 * *MultiplicationMine.txt*, which is the multiplication = x1*x2 (x1, x2)
