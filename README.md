@@ -1,3 +1,15 @@
 # Register Machine
+* A generic class of **Abstract machines** use in a manner similar to a **Turing machine**.
+* It Works with two things:
+1. A Program to get the instructions
+2. A Registers which contain the inputs and outputs
 
-1. Please run it in Linux Terminal or Windows Powershell. 
+## 
+
+## The files:
+* *MultiplicationMine.txt*, *PowerMine2.txt* which are multiplication of two enteries = x1*x2 (x1, x2) and Exponentiation = b^n (b is the base and n is the power) in respect
+
+
+## How to Use it:
+
+* Please run it in Linux Terminal or Windows Powershell. 
