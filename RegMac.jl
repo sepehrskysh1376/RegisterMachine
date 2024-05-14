@@ -2,7 +2,7 @@ println("Hello Sepehr!")
 print("We are creating a user surface for Register Machine.\n\n")
 print("\t\tRegister Machine\n")
 print("\t\t----------------\n")
-print("A machine that computate a specific function\nfor the function itself or a certain functionality.\n")
+print("A machine that compute a specific function\nFor the function itself or a certain functionality.\n")
 print("It asks you for the number of registers and
       then for each registers' value as initial configuration.\n\n")
 
@@ -13,7 +13,7 @@ function registers()
     Output
         An array with 'n' registers
     """
-    print("Howmany register do you need?\n> ")
+    print("How many register do you need?\n> ")
     n = parse(Int64, readline())
     return zeros(Int64, n)
 end
@@ -86,12 +86,18 @@ function functioning(program, registeries, program_number)
     end
 end
 
+# Input file
+print("\nThe files in the current directory:\n"); run(`ls`)
+print("\nEnter the file name:\n> "); filename = readline()
+
 
 reg = registers()
 println(reg)
 
-prog, prog_num = readProgram("PowerMine2.txt")
+
+prog, prog_num = readProgram(filename)
 println(prog)
 initialization(reg)
+
 
 functioning(prog, reg, prog_num)
