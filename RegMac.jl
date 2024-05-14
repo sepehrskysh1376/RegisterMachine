@@ -100,7 +100,7 @@ end
 
 # Input file
 print("\nThe files in the current directory:\n"); run(`ls`)
-print("\nEnter the file name:\n> "); filename = readline()
+print("\nEnter the program's file name:\n> "); filename = readline()
 prog, prog_num, RegsMinNum = readProgram(filename)
 
 reg = registers(RegsMinNum)
